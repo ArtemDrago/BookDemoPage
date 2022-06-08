@@ -1,0 +1,17 @@
+* {
+   margin: 0;
+   padding: 0;
+
+}
+.App {
+   width: 800px;
+   height: 100%;
+   margin: 0 auto;
+}
+.setings {
+   padding: 0 15px;
+   width:770px;
+   display:flex;
+   align-items: center;
+   justify-content: center; 
+}
