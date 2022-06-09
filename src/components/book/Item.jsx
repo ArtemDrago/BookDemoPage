@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ChangeBook from '../change/ChangeBook';
 import MyInput from '../UI/input/MyInput';
 import MyModal from '../UI/modal/MyModal';
-import MyButton from '../UI/MyButton';
+import MyButton from '../UI/button/MyButton';
 import './Item.css'
 
 const Item = ({items , remove, changeBook ,changeModal , setChangeModal ,handleState ,trueState ,bookState}) => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import MyInput from '../UI/input/MyInput';
-import MyButton from '../UI/MyButton';
+import MyButton from '../UI/button/MyButton';
 
 function CreateBook({createBook}) {
    const [book , setBook] = useState({bookName: '' , autor: ''})
@@ -9,10 +9,13 @@ function CreateBook({createBook}) {
       event.preventDefault()
             
            
-      const newBook = {
+    
+         const newBook = {
          ...book , id: new Date()
       }
       createBook(newBook)
+    
+
   setBook({bookName: '' , autor: ''})
 }
 

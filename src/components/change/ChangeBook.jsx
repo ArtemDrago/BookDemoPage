@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import MyInput from '../UI/input/MyInput';
-import MyButton from '../UI/MyButton';
+import MyButton from '../UI/button/MyButton';
 
 
 function ChangeBook({  changeBook  ,trueState, bookState}) {
@@ -9,11 +9,14 @@ useEffect(() => {
    setBooking({bookName: `${bookState.bookName}` , autor: `${bookState.autor}`})
 }, [bookState])
 
-
-
 const changeFalse = (e) => {
 e.preventDefault()
-trueState(booking.bookName , booking.autor )
+if (booking.bookName.length > 0 && booking.autor.length > 0) {
+   trueState(booking.bookName , booking.autor )
+} else {
+   trueState(bookState.bookName , bookState.autor )
+}
+
    
    changeBook(false)
    setBooking({bookName: '' , autor: ''})
@@ -38,11 +41,11 @@ trueState(booking.bookName , booking.autor )
       <MyButton 
       onClick={changeFalse}
       >
-        Изменить
+      Изменить
       </MyButton>
    </form>
    </div>
-    );
+   );
 }
 
 export default ChangeBook;

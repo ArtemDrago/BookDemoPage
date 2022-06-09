@@ -4,7 +4,7 @@ import CreateBook from './createbook/CreateBook';
 
 import MyInput from './UI/input/MyInput';
 import MyModal from './UI/modal/MyModal';
-import MyButton from './UI/MyButton';
+import MyButton from './UI/button/MyButton';
 
 
 
@@ -50,20 +50,24 @@ function TitleApp() {
   } , [search ,bookArr])
 
   const createBook = (newBook) => {
-    setBookArr([...bookArr , newBook])
+
+    if (newBook.autor.length > 0 && newBook.bookName.length > 0 ) {
+      setBookArr([...bookArr , newBook])
+      setModal(false)
+    } 
     setModal(false)
-   
   }
 
   const [changeModal , setChangeModal] = useState(false)
   const [cur , setCur] = useState({bookName: '' , autor:''})
   const [bookState , setBookState] = useState({})
   const [select , setSelect] = useState({id: '' ,bookName: '' , autor:''})
+
   const changeBook = (bool) => {
     setChangeModal(bool)
-   }
-   
-   useEffect(() => {
+  }
+  
+  useEffect(() => {
     setSelect({id: bookState.id , bookName: cur.bookName , autor: cur.autor})
   }, [cur ])
 
@@ -71,13 +75,12 @@ useEffect(() => {
   cellBook()
 },[select])
 
- 
 const cellBook = () => {
   setBookArr(bookArr.map(item => {
-    if (item.id === select.id) {
+    if (item.id === select.id ) {
       return select  ;
     } else {
-      return item
+      return item;
     }
   }))
   
@@ -113,25 +116,19 @@ const cellBook = () => {
     </MyButton>
     </div>
     <MyModal visible={modal} setVisible={setModal}>
-    <CreateBook createBook={createBook}/>
+      <CreateBook createBook={createBook}/>
     </MyModal>
 
-    
-       
-       
-        <Item 
+      <Item 
         remove={removeBook} 
         items={sortedBook}
-         changeBook={changeBook} 
-         changeModal={changeModal} 
-         setChangeModal={setChangeModal}
-         handleState={handleState}
-         
-         trueState={trueState}
-         bookState={bookState}
-         />
-     {/* trueState={trueState} */}
-      
+        changeBook={changeBook} 
+        changeModal={changeModal} 
+        setChangeModal={setChangeModal}
+        handleState={handleState}
+        trueState={trueState}
+        bookState={bookState}
+      />
     </div>
   );
 }
